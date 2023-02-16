@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<!-- Mirrored from e-hospital.godaddysites.com/register by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2022 05:04:01 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charSet="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register | E-Hospital</title>
+  <meta name="author" content="E-Hospital" />
+
+  <meta property="og:url" content="register.html" />
+  <meta property="og:site_name" content="E-Hospital" />
+  <meta property="og:title" content="E-Hospital" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://img1.wsimg.com/isteam/stock/Ddj9aVd" />
+  <meta property="og:locale" content="en_CA" />
+  <link rel="stylesheet" href="/css/style-starter.css">
+  <link rel="stylesheet" href="/css/patients.css">
+
+</head>
+<body>
+
+
+<%- include('../partials/header') -%>
+
+    <div class="container">
+        <div class="title">Patients Registration From</div>
+        <div class="content">
+            <form action="/get_patientInfo" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input name="Fname" type="text" id="Fname" value="" placeholder="Enter your name" required>
+                    </div>
+                    <!-- <div class="input-box">
+                        <span class="details">Middle Name</span>
+                        <input name="Mname" type="text" id="MName" placeholder="Enter your Middle Name" required>
+                    </div> -->
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input name="LName" type="text" id="LName" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Gender</span>
+                        <input name="gender" type="text" id="gender" placeholder="Male or Female" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Age</span>
+                        <input name="Age" type="text" id="Age" placeholder="Enter your age" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Blood Group</span>
+                        <input name="bloodGroup" type="text" id="bloodGroup" placeholder="Enter blood group" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Mobile Number</span>
+                        <input name="number" type="text" id="number" placeholder="Enter Your Mobile Number">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input name="EmailId" type="text" id="EmailId" placeholder="Enter Your Email ID" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Address</span>
+                        <input name="Address" type="text" id="Address" placeholder="Your Address" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Location</span>
+                        <input name="Location" type="text" id="Location" placeholder="Your Address" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Postal Code</span>
+                        <input name="PostalCode" type="text" id="PostalCode" placeholder="Your Postal Code" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">City</span>
+                        <input name="City" type="text" id="city" placeholder="Your City" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Province</span>
+                        <input name="province" type="text" id="province" placeholder="Your Province" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Health Card Number</span>
+                        <input name="H_CardNo" type="text" id="H_CardNo" placeholder="Enter Health Card Number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Passport Number</span>
+                        <input name="PassportNo" type="text" id="PassportNo" placeholder="Enter Passport Number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">PR Number</span>
+                        <input name="PRNo" type="text" id="PRNo" placeholder="Enter PR Number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Driving License Number</span>
+                        <input name="DLNo" type="text" id="DLNo" placeholder="Driving License Number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input name="Password" type="password" id="Password" placeholder="please enter your Password" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input name="Password_confirm" type="password" id="Password_confirm" placeholder="enter your Password again" required>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input name="" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

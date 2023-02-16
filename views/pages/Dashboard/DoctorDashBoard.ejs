@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>E-Hospital Master Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/css/_all-skins.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>E</b>Hospital</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Doctor</b>Panel</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <!-- <a class="sidebar-toggle" data-toggle="control-sidebar" role="button" href="#">Toggle Control Sidebar</a> -->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <!-- <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> -->
+                </a>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/images/bg.jgp" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Admin</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <!-- <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                    class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form> -->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="treeview" id="patients_option">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Patients</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="treeview" id="doctors_option">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>My data</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="treeview" id="record_option">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Medical record</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" id="patients_table">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Patients Details
+                    <small>advanced tables</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="#">Tables</a></li>
+                    <li class="active">Data tables</li> -->
+                </ol>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email Id</th>
+                                            <th>Mobile Number</th>
+                                            <th>DL No.</th>
+                                            <th>Blood Group</th>
+                                            <th>Location</th>
+                                            <th>verification</th>
+                                            <th>is sick</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="patients_table_data">
+                                        <% patients.forEach(function(patient) { %>
+                                        <tr>
+                                            <td><%= patient.FName %></td>
+                                            <td><%= patient.LName %></td>
+                                            <td><%= patient.EmailId %></td>
+                                            <td><%= patient.MobileNumber %></td>
+                                            <td><%= patient.DLNumber %></td>
+                                            <td><%= patient.BloodGroup %></td>
+                                            <td><%= patient.Location %></td>
+                                            <% if(patient.verification) { %>
+                                            <td>verified</td>
+                                            <% } else { %>
+                                            <td>verification pending</td>
+                                            <% } %>
+                                            <% if(patient.isSick) { %>
+                                            <td>sick!</td>
+                                            <% } else { %>
+                                            <td>not sick!</td>
+                                            <% } %>
+                                        </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="content-wrapper" id="doctors_table">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Doctors Details
+                    <small>advanced tables</small>
+                </h1>
+                <!-- <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="#">Tables</a></li>
+                    <li class="active">Data tables</li>
+                </ol> -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email Id</th>
+                                            <th>Medical license </th>
+                                            <th>Specialization</th>
+                                            <th>Blood Group</th>
+                                            <th>Location</th>
+                                            <th>Verification</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="doctor_table_data">
+                                        <tr>
+                                            <td><%= doctor.Fname %></td>
+                                            <td><%= doctor.Lname %></td>
+                                            <td><%= doctor.EmailId %></td>
+                                            <td><%= doctor.Medical_LICENSE_Number %></td>
+                                            <td><%= doctor.Specialization %></td>
+                                            <td><%= doctor.bloodGroup %></td>
+                                            <td><%= doctor.Location1 %></td>
+                                            <% if(doctor.verification) { %>
+                                            <td>verified</td>
+                                            <% } else { %>
+                                            <td>verification pending</td>
+                                            <% } %>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="content-wrapper" id="record_table">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Patient records
+                    <small>advanced tables</small>
+                </h1>
+                <div>
+                    <button id="createRecordBtn" class="btn btn-primary">Create Record</button>
+                </div>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <table id="record" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Patient Name</th>
+                                            <th>uuid</th>
+                                            <th>Gender</th>
+                                            <th>CaseName</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="record_table_data">
+                                        <% record.forEach(function(record) { %>
+                                        <tr>
+                                            <td><%= record.id %></td>
+                                            <td><%= record.PatientName %></td>
+                                            <td><%= record.uuid %></td>
+                                            <td><%= record.Gender %></td>
+                                            <% if(record.isSick) { %>
+                                            <td><%= record.CaseName %></td>
+                                            <% } else { %>
+                                            <td>You are healthy!</td>
+                                            <% } %>
+                                            <td><button onclick="handleDelete(this)">delete</button></td>
+                                        </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="modal" id='modal'>
+        <div id="modal_mask"></div>
+        <div class="modal_inner">
+            <div id="modal_header">
+                <span>Create Record</span>
+                <div id="modal_close" onclick="hidder()">x</div>
+            </div>
+            <div class="modal_content">
+                <div class="title">Create Record</div>
+                <form id="upload-file" method="post" enctype="multipart/form-data">
+                    <div class="upload">
+                        <label for="imageUpload" class="upload-label">
+                            Choose csv file
+                        </label>
+                        <input type="file" lang="en" name="file" id="imageUpload" required accept=".csv">
+                    </div>
+                </form>
+
+                <form id="form-data">
+                    <div class="field">
+                        <label>Patient Name</label>
+                        <input type="text" name="PatientName" required>
+                    </div>
+                    <div class="field">
+                        <label>Gender</label>
+                        <input type="text" name="Gender" required>
+                    </div>
+                </form>
+                <button class="submitBtn" onclick="submit()">Predict & submit</button>
+                <div id="tips" style="color:red; fontSize: 20px">please wait...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+    </footer>
+
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="/js/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.min.js"></script>
+    <!-- page script -->
+
+    <script>
+        $(function () {
+            $('#tips').hide();
+            $('#modal').hide();
+            $('#createRecordBtn').click(function () {
+                $('#modal').show();
+            })
+            $('#modal_close').click(function () {
+                $('#modal').hide();
+            })
+        })
+        $('#doctors_table').hide();
+        $('#record_table').hide();
+        $(function () {
+            $('#patients_option').click(function () {
+                $('#patients_table').show();
+                $('#doctors_table').hide();
+                $('#record_table').hide();
+            });
+            $('#doctors_option').click(function () {
+                $('#patients_table').hide();
+                $('#doctors_table').show();
+                $('#record_table').hide();
+            });
+            $('#record_option').click(function () {
+                $('#patients_table').hide();
+                $('#doctors_table').hide();
+                $('#record_table').show();
+            });
+
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+            $('#record').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+            })
+        })
+    </script>
+    <script>
+        function handleDelete(e) {
+            console.log($(e).parents('tr').children().eq(0).text())
+            const form_data = {
+                id: $(e).parents('tr').children().eq(0).text(),
+                uuid: $(e).parents('tr').children().eq(2).text()
+            }
+            $.post({
+                url: '/Delete_Record',
+                data: form_data,
+                async: true,
+                success: function (data) {
+                    console.log('Success!', data);
+                    getSicknessRecord();
+                },
+            });
+        }
+
+        function getSicknessRecord() {
+            $.post({
+                url: '/getSicknessRecord',
+                async: true,
+                success: function (res) {
+                    console.log('Success!', res);
+                    const data = res.data;
+                    $('#record_table_data').children().remove();
+                    data.forEach((ele) => {
+                        var tdlie = document.createElement("tr");
+                        const str = "<td>" + ele.id + "</td><td>" + ele.PatientName + "</td><td>" +
+                            ele.uuid + "</td><td>" + ele.Gender + "</td>" +
+                            "<td>" + (ele.isSick ? ele.CaseName :
+                                "You are healthy!") +
+                            "</td><td><button onclick=handleDelete(this)>delete</button></td>"
+                        $(tdlie).html(str)
+                        console.log(str)
+                        console.log(tdlie)
+                        $('#record_table_data').append(tdlie);
+                    })
+                },
+            });
+        }
+
+        function submit() {
+            var file_data = new FormData($('#upload-file')[0]);
+            var form_data = new FormData($('#form-data')[0]);
+            $('#tips').text("please wait...");
+            $('#tips').show();
+            if (file_data.get('file').size == 0) {
+                $('#tips').text("please upload a file!");
+                return;
+            }
+            if (!form_data.get('PatientName') || !form_data.get('Gender')) {
+                $('#tips').text("please input PatientName or Gender!");
+                return;
+            }
+            // Make prediction by calling api /predict
+            $.ajax({
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: 'POST',
+                url: 'http://localhost:5001/predict',
+                data: file_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                success: function (data) {
+                    // Get and display the result
+                    console.log('Success!', eval('(' + data + ')'));
+                    const result = eval('(' + data + ')');
+                    var _caseName = '';
+                    for (item in result) {
+                        if (result[item].length > 0) _caseName += item + ': [' + result[item].join() + ']' +
+                            ';' //&& item!=='Normal'
+                    }
+                    console.log(_caseName)
+                    const isSick = result.APC.length > 0 || result.LBB.length > 0 || result.PAB.length >
+                        0 ||
+                        result.PVC.length > 0 || result.RBB.length > 0 || result.VEB.length > 0;
+                    form_data = {
+                        PatientName: form_data.get('PatientName'),
+                        Gender: form_data.get('Gender'),
+                        isSick,
+                        CaseName: _caseName,
+                    }
+                    console.log(form_data)
+                    $.post({
+                        url: '/Create_Record',
+                        data: form_data,
+                        async: true,
+                        success: function (data) {
+                            console.log('Success!', data);
+                            if (data.status == 2) {
+                                $('#tips').text("this patients already had a record")
+                            } else {
+                                getSicknessRecord();
+                                $('#tips').hide();
+                                $('#modal').hide();
+                            }
+                        },
+                    });
+                },
+                error: function () {
+                    $('#tips').hide();
+                    console.log('errerer')
+                },
+            });
+
+            return true
+        }
+    </script>
+    <style type="text/css">
+        body {
+            margin: 0px;
+        }
+
+        #modal_mask {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            background: #000;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        .modal_inner {
+            position: relative;
+            background: #fff;
+            width: 50%;
+            height: 80%;
+            border-radius: 5px;
+            margin: 5% auto;
+            z-index: 999;
+        }
+
+        #modal_header {
+            height: 40px;
+        }
+
+        #modal_close {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 5px;
+            background: red;
+            color: #fff;
+            right: 5px;
+            top: 5px;
+            text-align: center;
+        }
+
+        .modal_content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal_content .title {
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+            user-select: none;
+            border-radius: 15px 15px 0 0;
+            background: linear-gradient(-135deg, #747474, rgb(0, 0, 0));
+        }
+
+        .modal_content form:last-child {
+            padding: 10px 30px 50px 30px;
+        }
+
+        .modal_content .field {
+            display: flex;
+            width: 100%;
+            padding: 0 80px;
+        }
+
+        .modal_content .field input {
+            height: 100%;
+            width: 50%;
+            font-size: 17px;
+            padding-left: 20px;
+            border: 1px solid lightgrey;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .modal_content .field label {
+            width: 50%;
+            color: #999999;
+            font-weight: 400;
+            font-size: 17px;
+            pointer-events: none;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .modal_content .field input:focus,
+        .modal_content .field input:valid {
+            border-color: #747474;
+        }
+
+        .modal_content .field input:focus~label,
+        .modal_content .field input:valid~label {
+            font-size: 16px;
+            color: #747474;
+            background: #fff;
+            transform: translateY(-50%);
+        }
+
+        .upload {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .upload input {
+            width: 40%
+        }
+
+        .submitBtn {
+            width: 50%;
+            color: #fff;
+            border: none;
+            margin: 0 auto;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            background: linear-gradient(-135deg, #747474, #000000);
+            transition: all 0.3s ease;
+        }
+
+        #submitBtn:active {
+            transform: scale(0.95);
+        }
+
+        #submitBtn:hover {
+            background: linear-gradient(-135deg, #000000, #747474);
+        }
+    </style>
+
+</body>
+
+</html>

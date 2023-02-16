@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<!-- Mirrored from e-hospital.godaddysites.com/register by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2022 05:04:01 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charSet="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register | E-Hospital</title>
+  <meta name="author" content="E-Hospital" />
+
+  <meta property="og:url" content="register.html" />
+  <meta property="og:site_name" content="E-Hospital" />
+  <meta property="og:title" content="E-Hospital" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://img1.wsimg.com/isteam/stock/Ddj9aVd" />
+  <meta property="og:locale" content="en_CA" />
+  <link rel="stylesheet" href="/css/style-starter.css">
+  <link rel="stylesheet" href="/css/patients.css">
+
+</head>
+<body>
+    <%- include('../partials/header') -%>
+
+    <div class="container">
+        <div class="title">Hospital Admin Registration From</div>
+        <div class="content">
+            <form action="/Hospital" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Hospital Name</span>
+                        <input type="text" name="Hospital_Name" placeholder="Enter Hospital Name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input type="text" name="EmailId" placeholder="Enter Your Email Id" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Email</span>
+                        <input type="text" name="ConfirmEmail" placeholder="Enter Your Email ID" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Location 1</span>
+                        <input type="text" name="Location1" placeholder="Your Location 1" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Location 2</span>
+                        <input type="text" name="Location2" placeholder="Your Location 2" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Postal Code</span>
+                        <input type="text" name="PostalCode" placeholder="Your Postal Code" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">City</span>
+                        <input type="text" name="city" placeholder="Your City" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Province</span>
+                        <input type="text" name="province" placeholder="Your Province" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Country</span>
+                        <input type="text" name="Country" placeholder="Your Country" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Facilities-  No. Of departments​</span>
+                        <input type="text" name="Facilities_departments" placeholder="Enter Total Facilities Departments​">
+                    </div>                    
+                    <div class="input-box">
+                        <span class="details">Number of Doctors</span>
+                        <input type="text" name="DoctorNo" placeholder="Enter Numbers of Doctors" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">No. of Nurses​</span>
+                        <input type="text" name="N_Nureses" placeholder="Number of Nurses​" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">No. of admins</span>
+                        <input type="text" name="No_Admin" placeholder="Number of Admin" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">No. of patients per year</span>
+                        <input type="text" name="PatientsPerYear" placeholder="Number of patients/Yr" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">​Tax registration number​</span>
+                        <input type="text" name="TaxRegNo" placeholder="​Tax registration number​" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
