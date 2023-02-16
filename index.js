@@ -351,7 +351,6 @@ app.post("/get_patientInfo", (req, res) => {
 });
 app.post("/get_doctorInfo", (req, res) => {
   const get_doctorInfo = req.body;
-  // var password = crypto.randomBytes(16).toString("hex");
   let uuid = "DOC-" + "ON-" + get_doctorInfo.age + "-" + get_doctorInfo.province + "-" + Math.floor(Math.random() * 90000) + 10000;
   const _email = get_doctorInfo.EmailId;
   if(get_doctorInfo.Password_confirm!==get_doctorInfo.Password) {
