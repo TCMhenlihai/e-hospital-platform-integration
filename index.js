@@ -2,7 +2,7 @@ const express = require("express");
 const conn = require("./dbConnection/dbConnection");
 const body_parse = require("body-parser");
 const app = express();
-const port = process.env.PORT || 5668;
+const port = process.env.PORT || 5000;
 var sql = "";
 var crypto = require("crypto");
 
