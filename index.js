@@ -310,7 +310,7 @@ app.post("/get_patientInfo", (req, res) => {
     if (error) throw error;
     console.log(result);
     if (result.length > 0) {
-      res.send({ status: 1, msg: "email is exist", data: record_result });
+      res.send({ status: 1, msg: "email is existed", data: record_result });
       return;
     } else {
       const _fullName = getDetails.Fname + " " + getDetails.LName;
